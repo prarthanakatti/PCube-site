@@ -1,43 +1,31 @@
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.hero {
-  background-image: url('your-image.jpg'); /* Replace with your image name or hosted URL */
-  height: 100vh;
+  background-image: url('your-img.jpg.jpeg');
   background-size: cover;
   background-position: center;
-  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
 }
 
-.overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.welcome-box {
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
-.overlay h1 {
-  font-size: 2em;
+.welcome-box h1 {
+  color: #fff;
+  font-size: 2.5em;
   margin-bottom: 20px;
 }
 
-.overlay h1 span {
-  font-style: italic;
-  font-weight: 300;
-  font-size: 1.2em;
+.welcome-box h1 span {
+  font-weight: bold;
 }
 
 .start-btn {
@@ -54,4 +42,5 @@ body, html {
 .start-btn:hover {
   background-color: #003366;
 }
-background-image: url('your-img.jpg.jpeg');
+
+
