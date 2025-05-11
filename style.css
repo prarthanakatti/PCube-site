@@ -166,7 +166,7 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-  
+
 }
 body, html {
   margin: 0;
@@ -229,3 +229,7 @@ body, html {
 .cta-button:hover {
   background-color: #e65c00;
 }
+html {
+  scroll-behavior: smooth;
+}
+
