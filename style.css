@@ -216,6 +216,7 @@ body, html {
   background-image: url('assets/your-img.jpg.jpeg'); /* make sure this file exists */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   color: white;
   display: flex;
@@ -259,7 +260,7 @@ body, html {
   border-radius: 4px;
   text-decoration: none;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
