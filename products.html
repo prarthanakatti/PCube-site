@@ -29,6 +29,22 @@
       </div>
       <!-- Add more products here -->
     </div>
+    <div id="order-form-container" class="order-form hidden">
+      <h2>Order Product</h2>
+      <form id="order-form">
+        <input type="hidden" id="product-name" name="product" />
+        <input type="hidden" id="product-price" name="price" />
+    
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="address" placeholder="Delivery Address" required />
+        <input type="number" name="quantity" placeholder="Quantity" min="1" required />
+    
+        <button type="submit">Place Order</button>
+        <button type="button" onclick="closeOrderForm()">Cancel</button>
+      </form>
+    </div>
+    
   </section>
 
   <footer>
