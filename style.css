@@ -244,6 +244,13 @@ body, html {
 .hidden {
   display: none;
 }
+.order-form input,
+.order-form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+}
 
 html {
   scroll-behavior: smooth;

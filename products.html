@@ -48,9 +48,51 @@
     </div>
     
   </section>
-
+  
   <footer>
     <p>&copy; 2025 PCube. All rights reserved.</p>
   </footer>
+  <script>
+    function openOrderForm(productName, price) {
+      document.getElementById('order-form-container').classList.remove('hidden');
+      document.getElementById('product-name').value = productName;
+      document.getElementById('product-price').value = price;
+    }
+  
+    function closeOrderForm() {
+      document.getElementById('order-form-container').classList.add('hidden');
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const data = {};
+        formData.forEach((value, key) => data[key] = value);
+        console.log("Order placed:", data); // You can replace this with actual saving logic
+  
+        alert("Order placed successfully!");
+        this.reset();
+        closeOrderForm();
+      });
+    });
+  </script>
+  <div id="order-form-container" class="order-form hidden">
+    <h2>Place Your Order</h2>
+    <form id="order-form">
+      <input type="hidden" id="product-name" name="product" />
+      <input type="hidden" id="product-price" name="price" />
+  
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="address" placeholder="Your Address" required />
+      <input type="number" name="quantity" placeholder="Quantity" required min="1" />
+  
+      <button type="submit">Place Order</button>
+      <button type="button" onclick="closeOrderForm()">Cancel</button>
+    </form>
+  </div>
+  
 </body>
 </html>
