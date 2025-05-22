@@ -8,26 +8,31 @@ function closeOrderForm() {
   document.getElementById('order-form-container').classList.add('hidden');
 }
 
-document.getElementById('order-form').addEventListener('submit', async function(e) {
+document.getElementById('order-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  formData.append("form", "order"); // 👈 very important to route data to "Order Submissions"
-
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycby61CvYnBfS8XJNQ_UYqCx-slpK36OYYDc2xjP77CYDAWYfe2ezG_fZE1-H9__cIqs3/exec", {
-      method: "POST",
-      body: formData,
-    });
-
-    const result = await response.text();
-    alert("Order placed successfully!");
-    this.reset();
-    closeOrderForm();
-  } catch (error) {
-    console.error("Order submission failed", error);
-    alert("Failed to place order. Please try again.");
+  const data = new URLSearchParams();
+  for (const pair of formData) {
+    data.append(pair[0], pair[1]);
   }
+
+  fetch("https://script.google.com/macros/s/AKfycbxD7gxJv0Qb6kSsIhZW8biskKuCL5HI0UQtraT9y3A800CNTUi9cpYuQ/exec", {
+    method: "POST",
+    body: data,
+  })
+    .then(response => response.text())
+    .then(responseText => {
+      alert("Order placed successfully!");
+      console.log("Order response:", responseText);
+      document.getElementById('order-form').reset();
+      closeOrderForm();
+    })
+    .catch(error => {
+      console.error("Error submitting order:", error);
+      alert("Something went wrong. Please try again.");
+    });
 });
+
 
   
