@@ -17,7 +17,7 @@ document.getElementById('order-form').addEventListener('submit', function (e) {
     data.append(pair[0], pair[1]);
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbxD7gxJv0Qb6kSsIhZW8biskKuCL5HI0UQtraT9y3A800CNTUi9cpYuQ/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwfUPmYDS16wGIXAgbaf5GNwmYzFMlETNrK2SOiaaa6chx9inRrMI0s4HV6-hS_lfg6/exec", {
     method: "POST",
     body: data,
   })
