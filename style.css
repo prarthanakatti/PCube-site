@@ -89,6 +89,11 @@ body {
   padding: 1.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+} 
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .product img {
@@ -230,17 +235,27 @@ body, html {
   background-color: #e65c00;
 }
 .order-form {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
   position: fixed;
-  top: 10%;
+  top: 20%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%) scale(1);
   background: white;
-  border: 1px solid #ccc;
-  padding: 2rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 1000;
-  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 999;
 }
+
+.order-form:not(.hidden) {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
 .hidden {
   display: none;
 }

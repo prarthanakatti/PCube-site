@@ -1,11 +1,14 @@
 function openOrderForm(productName, price) {
-  document.getElementById('order-form-container').classList.remove('hidden');
+  const container = document.getElementById('order-form-container');
+  container.classList.remove('hidden');
+  container.style.display = 'block'; // optional if you're hiding with `display: none`
   document.getElementById('product-name').value = productName;
   document.getElementById('product-price').value = price;
 }
 
 function closeOrderForm() {
-  document.getElementById('order-form-container').classList.add('hidden');
+  const container = document.getElementById('order-form-container');
+  container.classList.add('hidden');
 }
 
 document.getElementById('order-form').addEventListener('submit', function (e) {
