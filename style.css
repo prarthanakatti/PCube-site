@@ -235,25 +235,22 @@ body, html {
   background-color: #e65c00;
 }
 .order-form {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
   position: fixed;
-  top: 20%;
+  bottom: 0;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  z-index: 999;
+  transform: translate(-50%, 100%); /* hidden: off-screen below */
+  background: #fff;
+  width: 90%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease;
+  z-index: 1000;
 }
 
-.order-form:not(.hidden) {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: auto;
+.order-form.show {
+  transform: translate(-50%, 0); /* slide up into view */
 }
 
 .hidden {

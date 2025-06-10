@@ -1,24 +1,28 @@
 function openOrderForm(productName, price) {
   const container = document.getElementById('order-form-container');
-  container.classList.remove('hidden');
-  container.style.display = 'block'; // optional if you're hiding with `display: none`
+  container.classList.add('show');
   document.getElementById('product-name').value = productName;
   document.getElementById('product-price').value = price;
 }
 
 function closeOrderForm() {
   const container = document.getElementById('order-form-container');
-  container.classList.add('hidden');
+  container.classList.remove('show');
 }
 
-document.getElementById('order-form').addEventListener('submit', function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById('order-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => data[key] = value);
+    console.log("Order placed:", data);
 
-  const formData = new FormData(this);
-  const data = new URLSearchParams();
-  for (const pair of formData) {
-    data.append(pair[0], pair[1]);
-  }
+    alert("Order placed successfully!");
+    this.reset();
+    closeOrderForm();
+  });
+});
 
   fetch("https://script.google.com/macros/s/AKfycbwfUPmYDS16wGIXAgbaf5GNwmYzFMlETNrK2SOiaaa6chx9inRrMI0s4HV6-hS_lfg6/exec", {
     method: "POST",
