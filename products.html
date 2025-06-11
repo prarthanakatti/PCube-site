@@ -5,6 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Products | PCube</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .order-form {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+      transition: bottom 0.4s ease-in-out;
+      z-index: 999;
+    }
+
+    .order-form.show {
+      bottom: 0;
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 250px;
+    }
+
+    .product img {
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -29,69 +62,67 @@
         <p><strong>₹499</strong></p>
         <button onclick="openOrderForm('PCB Board X1', 499)">Order Now</button>
       </div>
-      <!-- Add more products here -->
+      <!-- You can add more product cards here -->
     </div>
-    <div id="order-form-container" class="order-form">
-      <h2>Place Your Order</h2>
-      <form id="order-form">
-        <input type="hidden" id="product-name" name="product" />
-        <input type="hidden" id="product-price" name="price" />
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="text" name="address" placeholder="Your Address" required />
-        <input type="number" name="quantity" placeholder="Quantity" required min="1" />
-        <button type="submit">Place Order</button>
-        <button type="button" onclick="closeOrderForm()">Cancel</button>
-      </form>
-    </div>
-    
-    
   </section>
-  
-  <footer>
-    <p>&copy; 2025 PCube. All rights reserved.</p>
-  </footer>
-  <script>
-    function openOrderForm(productName, price) {
-      document.getElementById('order-form-container').classList.remove('hidden');
-      document.getElementById('product-name').value = productName;
-      document.getElementById('product-price').value = price;
-    }
-  
-    function closeOrderForm() {
-      document.getElementById('order-form-container').classList.add('hidden');
-    }
-  
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById('order-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        const data = {};
-        formData.forEach((value, key) => data[key] = value);
-        console.log("Order placed:", data); // You can replace this with actual saving logic
-  
-        alert("Order placed successfully!");
-        this.reset();
-        closeOrderForm();
-      });
-    });
-  </script>
-  <div id="order-form-container" class="order-form hidden">
+
+  <div id="order-form-container" class="order-form">
     <h2>Place Your Order</h2>
     <form id="order-form">
       <input type="hidden" id="product-name" name="product" />
       <input type="hidden" id="product-price" name="price" />
-  
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <input type="text" name="address" placeholder="Your Address" required />
       <input type="number" name="quantity" placeholder="Quantity" required min="1" />
-  
       <button type="submit">Place Order</button>
       <button type="button" onclick="closeOrderForm()">Cancel</button>
     </form>
   </div>
-  
+
+  <footer>
+    <p>&copy; 2025 PCube. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openOrderForm(productName, price) {
+      const container = document.getElementById('order-form-container');
+      container.classList.add('show');
+      document.getElementById('product-name').value = productName;
+      document.getElementById('product-price').value = price;
+    }
+
+    function closeOrderForm() {
+      const container = document.getElementById('order-form-container');
+      container.classList.remove('show');
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const data = new URLSearchParams();
+        formData.forEach((value, key) => data.append(key, value));
+
+        fetch("https://script.google.com/macros/s/AKfycbwfUPmYDS16wGIXAgbaf5GNwmYzFMlETNrK2SOiaaa6chx9inRrMI0s4HV6-hS_lfg6/exec", {
+          method: "POST",
+          body: data
+        })
+        .then(response => response.text())
+        .then(responseText => {
+          alert("Order placed successfully!");
+          console.log("Order response:", responseText);
+          document.getElementById('order-form').reset();
+          closeOrderForm();
+        })
+        .catch(error => {
+          console.error("Error submitting order:", error);
+          alert("Something went wrong. Please try again.");
+        });
+      });
+    });
+  </script>
 </body>
 </html>
+
