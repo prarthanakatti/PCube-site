@@ -234,28 +234,33 @@ body, html {
 .cta-button:hover {
   background-color: #e65c00;
 }
+/* Base form container style */
 .order-form {
   position: fixed;
-  bottom: 0;
+  bottom: -100%;
   left: 50%;
-  transform: translate(-50%, 100%); /* hidden: off-screen below */
-  background: #fff;
+  transform: translateX(-50%);
   width: 90%;
   max-width: 400px;
-  padding: 24px;
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.5s ease;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+  transition: bottom 0.4s ease-in-out;
   z-index: 1000;
 }
 
+/* When form should be shown */
 .order-form.show {
-  transform: translate(-50%, 0); /* slide up into view */
+  bottom: 50px; /* Slide up visibly */
 }
 
-.hidden {
-  display: none;
+/* Ensure it's hidden initially */
+.order-form:not(.show) {
+  pointer-events: none;
+  opacity: 0;
 }
+
 .order-form input,
 .order-form button {
   display: block;
