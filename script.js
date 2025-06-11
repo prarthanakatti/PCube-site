@@ -13,21 +13,18 @@ function closeOrderForm() {
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('order-form').addEventListener('submit', function (e) {
     e.preventDefault();
+
     const formData = new FormData(this);
-    const data = {};
-    formData.forEach((value, key) => data[key] = value);
-    console.log("Order placed:", data);
+    const data = new URLSearchParams(); // Needed for sending to Google Apps Script
 
-    alert("Order placed successfully!");
-    this.reset();
-    closeOrderForm();
-  });
-});
+    formData.forEach((value, key) => {
+      data.append(key, value);
+    });
 
-  fetch("https://script.google.com/macros/s/AKfycbwfUPmYDS16wGIXAgbaf5GNwmYzFMlETNrK2SOiaaa6chx9inRrMI0s4HV6-hS_lfg6/exec", {
-    method: "POST",
-    body: data,
-  })
+    fetch("https://script.google.com/macros/s/AKfycbwfUPmYDS16wGIXAgbaf5GNwmYzFMlETNrK2SOiaaa6chx9inRrMI0s4HV6-hS_lfg6/exec", {
+      method: "POST",
+      body: data,
+    })
     .then(response => response.text())
     .then(responseText => {
       alert("Order placed successfully!");
@@ -39,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error submitting order:", error);
       alert("Something went wrong. Please try again.");
     });
+  });
 });
+
 
 
   
