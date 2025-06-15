@@ -235,9 +235,10 @@ body, html {
   background-color: #e65c00;
 }
 /* Base form container style */
+/* This hides the form off-screen initially */
 .order-form {
   position: fixed;
-  bottom: -100%;
+  bottom: -100%; /* Start below view */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -245,20 +246,20 @@ body, html {
   background-color: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   transition: bottom 0.4s ease-in-out;
   z-index: 1000;
+  opacity: 1;
 }
 
-/* When form should be shown */
+/* This slides the form up into view */
 .order-form.show {
-  bottom: 50px; /* Slide up visibly */
+  bottom: 50px; /* Slides into visible area */
 }
 
-/* Ensure it's hidden initially */
+/* Optional: smooth fade out (if needed) */
 .order-form:not(.show) {
   pointer-events: none;
-  opacity: 0;
 }
 
 .order-form input,
