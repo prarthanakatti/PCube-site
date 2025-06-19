@@ -15,11 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const formData = new FormData(this);
-    const data = new URLSearchParams(); // Needed for sending to Google Apps Script
+    const data = {}; // Needed for sending to Google Apps Script
 
-    formData.forEach((value, key) => {
-      data.append(key, value);
-    });
+    formData.forEach((value, key) => data[key] = value);
+    console.log("Order placed:", data);
+
+    alert("Order placed successfully!");
+    this.reset();
+    closeOrderForm();
+  });
+});
 
     fetch("https://script.google.com/macros/s/AKfycbwfUPmYDS16wGIXAgbaf5GNwmYzFMlETNrK2SOiaaa6chx9inRrMI0s4HV6-hS_lfg6/exec", {
       method: "POST",

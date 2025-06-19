@@ -66,20 +66,6 @@
     </div>
   </section>
 
-  <div id="order-form-container" class="order-form">
-    <h2>Place Your Order</h2>
-    <form id="order-form">
-      <input type="hidden" id="product-name" name="product" />
-      <input type="hidden" id="product-price" name="price" />
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="address" placeholder="Your Address" required />
-      <input type="number" name="quantity" placeholder="Quantity" required min="1" />
-      <button type="submit">Place Order</button>
-      <button type="button" onclick="closeOrderForm()">Cancel</button>
-    </form>
-  </div>
-
   <footer>
     <p>&copy; 2025 PCube. All rights reserved.</p>
   </footer>
@@ -123,6 +109,19 @@
       });
     });
   </script>
+  <div id="order-form-container" class="order-form">
+    <h2>Place Your Order</h2>
+    <form id="order-form">
+      <input type="hidden" id="product-name" name="product" />
+      <input type="hidden" id="product-price" name="price" />
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="address" placeholder="Your Address" required />
+      <input type="number" name="quantity" placeholder="Quantity" required min="1" />
+      <button type="submit">Place Order</button>
+      <button type="button" onclick="closeOrderForm()">Cancel</button>
+    </form>
+  </div>
 </body>
 </html>
 
