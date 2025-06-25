@@ -27,11 +27,33 @@
     </div>
   </section>
 
-  <section class="hero">
-    <h1>Innovative Electronics from PCube</h1>
-    <p>PCB boards, sensors, and more — made in-house</p>
-    <a href="#products" class="btn">Explore Products</a>
-  </section>
+<section class="hero">
+  <div class="login-overlay  show" id="loginOverlay"></div>
+  <div class="login-card  show" id="loginCard">
+      <h2>Sign in</h2>
+
+      <form id="loginForm">
+        <input type="text"
+               name="username"
+               placeholder="Username"
+               required />
+
+        <input type="password"
+               name="password"
+               placeholder="Password"
+               required />
+
+        <button type="submit">Log in</button>
+      </form>
+
+      <p class="tiny-hint">Demo login → <b>user</b> / <b>pcube123</b></p>
+  </div>
+
+  <h1>Welcome to PCube Tech<br>Solutions</h1>
+  <p>Delivering reliable boards, sensors &amp; embedded systems for your next big product.</p>
+
+  <a href="products.html" class="btn">Explore Products</a>
+</section>
 
   <footer>
     <p>&copy; 2025 PCube. All rights reserved.</p>

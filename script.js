@@ -41,8 +41,36 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error submitting order:", error);
       alert("Something went wrong. Please try again.");
     });
-  });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay   = document.getElementById('loginOverlay');
+  const card      = document.getElementById('loginCard');
+  const loginForm = document.getElementById('loginForm');
+
+  if (loginForm) {       
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const u = loginForm.username.value.trim();
+      const p = loginForm.password.value.trim();
+
+      if (u === 'user' && p === 'pcube123'){
+        overlay.classList.remove('show');
+        card.classList.remove('show');
+
+        sessionStorage.setItem('pcubeLoggedIn', 'yes');
+
+        window.location.href = 'products.html';
+      } else {
+        alert('Invalid username / password');
+      }
+    });
+
+    if (sessionStorage.getItem('pcubeLoggedIn') === 'yes'){
+      window.location.replace('products.html');
+    }
+  }
 });
+    
 
 
 

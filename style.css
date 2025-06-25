@@ -1,4 +1,4 @@
-/* Global Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -234,11 +234,9 @@ body, html {
 .cta-button:hover {
   background-color: #e65c00;
 }
-/* Base form container style */
-/* This hides the form off-screen initially */
 .order-form {
   position: fixed;
-  bottom: -100%; /* Start below view */
+  bottom: -100%; 
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -272,4 +270,54 @@ body, html {
 html {
   scroll-behavior: smooth;
 }
+/* ---------- Login overlay & card ---------- */
+.login-overlay {
+  position: fixed;
+  inset: 0;                       /* top,right,bottom,left = 0 */
+  background: rgba(0,0,0,.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  z-index: 40;
+}
+.login-card {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) scale(.9);
+  width: 320px;
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease, transform .4s ease;
+  z-index: 45;
+}
+.login-card h2 {margin-bottom: 1rem;}
+.login-card input,
+.login-card button {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.login-card button {
+  background: #007bff;   color:#fff;  border:none;
+  cursor: pointer;       font-weight:600;
+}
+.login-card button:hover {background:#005ec9;}
+
+.login-card.show,
+.login-overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+.login-card.show{transform:translate(-50%,-50%) scale(1);}
+
+.tiny-hint{
+  font-size:.75rem; color:#777; text-align:center; margin-top:-.5rem;
+}
+
 
